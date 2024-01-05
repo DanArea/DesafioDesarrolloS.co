@@ -1,0 +1,20 @@
+.header-container {
+    display: flex;
+    align-items: center;
+    background-color: rgb(255, 255, 255); /* Color de fondo gris */
+    padding: 10px 20px; /* Espacio alrededor del contenido */
+    color: rgb(0, 0, 0); /* Color de texto blanco */
+}
+
+.header-logo {
+    width: 50px; /* Ajusta según el tamaño deseado para tu logo */
+    height: auto;
+    margin-right: 10px; /* Espacio entre el logo y el título */
+}
+
+.header-title {
+    font-family: sans-serif; /* Fuente del título */
+    font-size: 14px; /* Tamaño del texto del título */
+
+}
+

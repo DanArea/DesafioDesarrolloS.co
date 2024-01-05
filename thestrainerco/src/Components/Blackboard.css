@@ -1,0 +1,57 @@
+.pizarra-container {
+    position: relative;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+  }
+  
+  .pizarra-canvas {
+    width: 100%;
+    height: calc(100vh - 50px); /* Resta 50px para dejar espacio para los botones */
+    border: 1px solid rgb(255, 255, 255);
+  }
+  
+  .button-container {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%); /* Centra los botones horizontalmente */
+    display: flex;
+    gap: 10px;
+  }
+  
+  .pizarra-button {
+    background-color: rgb(86, 106, 246);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pizarra-button:hover {
+    background-color: rgb(74, 94, 248);;
+  }
+  .brush-slider-container {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; /* Espacio entre el slider y los botones */
+    color: rgb(86, 106, 246);
+  }
+  
+  .brush-slider {
+    width: 100px;
+    margin-left: 10px; /* Espacio entre el texto y el slider */
+  }
+  
+  /* Estilos adicionales para el slider */
+
+  .brush-slider::-moz-range-thumb {
+    background: rgb(86, 106, 246);
+  }
+  .no-zoom-container {
+    touch-action: none; /* Desactiva la acción táctil para prevenir el zoom en dispositivos móviles */
+    overflow: hidden;   /* Oculta el desbordamiento para evitar que el contenido se mueva fuera del contenedor */
+    position: relative; /* Asegura que cualquier posición absoluta o relativa dentro del contenedor se mantenga */
+  }
+  
