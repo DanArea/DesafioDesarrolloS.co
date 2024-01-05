@@ -1,0 +1,38 @@
+/* ChatButton.css */
+
+.chat-button-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000; /* Asegura que esté encima de otros elementos */
+  }
+  
+  .chat-button {
+    background-color: #007bff; /* Color del botón */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Forma de círculo */
+    width: 60px;
+    height: 60px;
+    font-size: 1.5em;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  }
+  
+  .chat-button:hover {
+    background-color: #0056b3; /* Cambia el color al pasar el ratón */
+  }
+  
+  .chat-cloud {
+    position: absolute;
+    bottom: 100%; /* Posición por encima del botón */
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    z-index: 999; /* Asegura que esté por debajo del botón pero encima de otros elementos */
+  }
+  

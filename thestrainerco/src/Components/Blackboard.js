@@ -15,6 +15,31 @@ const Pizarra = () => {
     newSize = e.target.value;
     ctxRef.current.lineWidth = newSize;  // Establece el nuevo ancho de línea para el pincel
   };
+
+  const saveDrawing = async () => {
+    const canvas = canvasRef.current;
+    const image = canvas.toDataURL(); // Obtiene la imagen en formato base64
+  
+    try {
+      const response = await fetch('http://localhost:3001/saveDrawing', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ drawing: image })
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error al guardar el dibujo');
+      }
+  
+      const data = await response.json();
+      console.log(data.message); // Deberías ver 'Dibujo guardado con éxito' en la consola
+  
+    } catch (error) {
+      console.error('Error al intentar guardar el dibujo:', error.message);
+    }
+  };
   
 
   useEffect(() => {
@@ -33,12 +58,12 @@ const Pizarra = () => {
       ctx.beginPath();
       ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top); // Ajusta las coordenadas del mouse
     };
-    
+
     const handleMouseMove = (e) => {
       if (!isDrawing.current) return;
       const rect = canvasRef.current.getBoundingClientRect(); // Obtén el rectángulo del canvas
       ctx.strokeStyle = isErasing.current ? 'white' : 'black';
-      ctx.lineWidth = isErasing.current ? 35 : newSize;
+      ctx.lineWidth = isErasing.current ? 3*newSize : newSize;
       ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top); // Ajusta las coordenadas del mouse
       ctx.stroke();
     };
@@ -89,6 +114,9 @@ const Pizarra = () => {
         </button>
         <button className="pizarra-button" onClick={setEraserCursor}>
           <i className="fas fa-eraser"></i>  {/* Icono de goma de borrar */}
+        </button>
+        <button className="pizarra-button" onClick={saveDrawing}>
+         Envíar respuesta.
         </button>
       </div>
     </div>
