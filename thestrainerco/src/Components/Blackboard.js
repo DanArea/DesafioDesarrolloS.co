@@ -7,19 +7,20 @@ const Pizarra = () => {
   const ctxRef = useRef(null);
   const isDrawing = useRef(false);
   const isErasing = useRef(false);
-  var newSize = 5;
+  var newSize = 3;
 
-  const handleBrushSizeChange = (e) => {
+  const handleBrushSizeChange = (e) => { //Metodo para cuando el Brush-slider cambie, actualiza el tamaño del lapiz
 
-    console.log(e.target.value);
+    //console.log(e.target.value);
     newSize = e.target.value;
     ctxRef.current.lineWidth = newSize;  // Establece el nuevo ancho de línea para el pincel
   };
 
-  const saveDrawing = async () => {
+  const saveDrawing = async () => { //Metodo para guardar el dibujo en el backend (Luego será introduccido en Chatgpt, claro que no es compatible con inferior a 4)
     const canvas = canvasRef.current;
     const image = canvas.toDataURL(); // Obtiene la imagen en formato base64
-  
+    const ctx = ctxRef.current;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);// Este es el metodo para borrar la pizarra luego de guardar, está aqui porque 
     try {
       const response = await fetch('http://localhost:3001/saveDrawing', {
         method: 'POST',
@@ -34,11 +35,15 @@ const Pizarra = () => {
       }
   
       const data = await response.json();
-      console.log(data.message); // Deberías ver 'Dibujo guardado con éxito' en la consola
+      console.log(data.message); // Dse tiene que ver 'Dibujo guardado con éxito' en la consola 
   
     } catch (error) {
       console.error('Error al intentar guardar el dibujo:', error.message);
     }
+
+    //  Actualiza la pizarra por lo que borra el dibujo
+
+
   };
   
 
@@ -86,11 +91,11 @@ const Pizarra = () => {
     };
   }, []);
 
-  const setPencilCursor = () => {
+  const setPencilCursor = () => { //Cambia el cursor para cuando dibuje
     canvasRef.current.style.cursor = 'crosshair';
   };
 
-  const setEraserCursor = () => {
+  const setEraserCursor = () => {//Cambia el cursor para cuando borre
     canvasRef.current.style.cursor = 'pointer';
   };
 

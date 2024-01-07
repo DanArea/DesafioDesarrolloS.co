@@ -27,6 +27,7 @@ function BlocDeNotas() {
     .catch((error) => {
       console.error('Error:', error);
     });
+    setTexto("");
   };
 
   return (

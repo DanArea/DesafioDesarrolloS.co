@@ -1,9 +1,9 @@
 import Header from './Components/Header';
-import Pizarra from './Components/Blackboard';
+//import Pizarra from './Components/Blackboard';
 import BlocDeNotas from './Components/BlocDeNotas';
 import AiButton from './Components/AiButton';
 import './App.css';
-import ChatButton from './Components/AiButton';
+import Pizarra from './Components/Blackboard';
 
 
 const App = () => {
@@ -11,9 +11,8 @@ const App = () => {
 <div className="app-container">
       <div className="header-container">
       <Header />
-      <AiButton />
       </div>
-      <BlocDeNotas />
+      <AiButton/>
     </div>
   );
 };
