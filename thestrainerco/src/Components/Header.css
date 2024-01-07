@@ -12,6 +12,12 @@
     margin-right: 10px; /* Espacio entre el logo y el título */
 }
 
+.header-logo:hover {
+    transition: transform 0.3s ease-in-out, 
+                box-shadow 0.3s ease-in-out;
+    transform: rotate(25deg) ;
+}
+
 .header-title {
     font-family: sans-serif; /* Fuente del título */
     font-size: 14px; /* Tamaño del texto del título */

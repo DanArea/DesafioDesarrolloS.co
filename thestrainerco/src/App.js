@@ -1,9 +1,8 @@
+import {  BrowserRouter as Router,  Routes,  Route} from "react-router-dom";
 import Header from './Components/Header';
-//import Pizarra from './Components/Blackboard';
-import BlocDeNotas from './Components/BlocDeNotas';
-import AiButton from './Components/AiButton';
 import './App.css';
-import Pizarra from './Components/Blackboard';
+import AiButton from './Components/AiButton';
+import LandingPage from './Components/LandingPage';
 
 
 const App = () => {
@@ -12,7 +11,13 @@ const App = () => {
       <div className="header-container">
       <Header />
       </div>
-      <AiButton/>
+      <Router>
+   <Routes>
+      <Route path ='*' element={<LandingPage/>} />
+      <Route path ='/fit' element={<AiButton/>} />
+      </Routes>
+ </Router>
+
     </div>
   );
 };

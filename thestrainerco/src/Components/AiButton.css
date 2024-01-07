@@ -19,20 +19,77 @@
   }
   
   .chat-button:hover {
-    background-color: #0056b3; /* Cambia el color al pasar el ratón */
+    background-color: rgb(74, 94, 248);; /* Cambia el color al pasar el ratón */
+  }
+
+  .chat-button {
+    /* Estilos existentes para el botón... */
+    transition: transform 0.3s ease-in-out, 
+                box-shadow 0.3s ease-in-out; /* Nueva transición para sombra */
   }
   
+  .chat-button.rotate {
+    transform: rotate(10deg);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Añadir una sombra sutil */
+  }
+  
+  /* Agregar un poco de oscilación cuando el botón se presiona */
+  .chat-button:active {
+    transform: rotate(10deg); /* Girar un poco menos que cuando está "rotado" */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); /* Sombra más sutil */
+  }
+  
+  /* Agregar un poco de movimiento al botón cuando se pasa el mouse */
+  .chat-button:hover {
+    transform: translateY(-3px); /* Mover el botón hacia arriba un poco */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); /* Sombra ligeramente más oscura */
+  }
   .chat-cloud {
     position: absolute;
-    bottom: 100%; /* Posición por encima del botón */
-    right: 0;
+    bottom: 120%;
+    right: -30%;
     background-color: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
-    z-index: 999; /* Asegura que esté por debajo del botón pero encima de otros elementos */
+    border: 2px solid #ccc;
+    padding: 20px 25px;
+    border-radius: 30px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    width: 200px; /* El doble del ancho original de 400px */
+    height: auto; /* Mismo alto que el original */
+    font-size: 15px;
+    line-height: 1.5;
+    overflow: visible;
+}
+
+  
+  .chat-cloud::after {
+    content: '';
+    position: absolute;
+    bottom: -0px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0);
+    z-index: -1;
   }
+  
+  .chat-cloud::before {
+    content: '';
+    position: absolute;
+    bottom: -25px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+    transform: rotate(-195deg);
+    z-index: -2; /* Asegura que esté detrás del pseudo-elemento principal */
+    clip-path: polygon(100% 100%, 0 100%, 0 0); /* Crea una máscara para ocultar la parte que se superpone */
+  }
+  
+  
+  
   
   .toggle-container {
     position: fixed;
